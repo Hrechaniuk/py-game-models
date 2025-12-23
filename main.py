@@ -14,12 +14,12 @@ def main() -> None:
             description=info.get("race").get("description")
         )
 
-        if info.get("guild") is None:
-            guild_obj = None
-        else:
+        guild_data = info.get("guild")
+        guild_obj = None
+        if guild_data:
             guild_obj, _ = Guild.objects.get_or_create(
-                name=info.get("guild").get("name"),
-                description=info.get("guild").get("description")
+                name=guild_data.get("name"),
+                description=guild_data.get("description")
             )
 
         player_obj, _ = Player.objects.get_or_create(
